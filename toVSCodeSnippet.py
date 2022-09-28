@@ -4,11 +4,11 @@ print("----------------------------------------\n")
 try:
     # user input
     name = input("Enter the name for the snippet: ")
-    prefix = input("Enter the prefix (= name used to call the snippet in VS Code): ")
+    prefix = input("Enter the snippet prefix (= name used to call the snippet in VS Code): ")
 
     # check if file exists
     while True:
-        input_path = input("Enter the path of the to be converted file: ")
+        input_path = input("Enter the path and filename of the to be converted file: ")
         try:
             file = open(input_path, 'r').readlines()
         except FileNotFoundError:
@@ -16,8 +16,9 @@ try:
         else:
             break
 
-    description = input("Enter the description: ")
-    output_path = input("Enter the path and filename for the output file: ")
+    description = input("Enter the snippet description: ")
+    output_path = input("Enter the path and filename for the output file (no file extension needed): ")
+    output_path = output_path + ".txt"
 
     # convert array list to string
     def listToString(list):
@@ -79,7 +80,8 @@ try:
     
         if save_in_vscode == "yes":
             try:
-                vscode_snippets_path = "C:\\Users\\Lien\\AppData\\Roaming\\Code\\User\\snippets\\" + name + ".code-snippets"
+                # vscode_snippets_path = "C:\\Users\\Lien\\AppData\\Roaming\\Code\\User\\snippets\\" + name + ".code-snippets"
+                vscode_snippets_path = "C:/Users/Lien/AppData/Roaming/Code/User/snippets/" + name + ".code-snippets"
                 vscode_file = open(vscode_snippets_path, "w")
                 vscode_file.writelines(text_list)
             except:
@@ -91,3 +93,6 @@ except KeyboardInterrupt:
     print("\n")
     print("Exiting code...")
     exit()
+
+# exit the script
+exit()
